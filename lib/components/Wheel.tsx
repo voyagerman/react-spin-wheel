@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
 import styled from "styled-components";
+import arrow from "../images/arrow.png";
 
 interface RotatingCanvasProps {
   $rotationAngle: number;
@@ -24,7 +25,11 @@ const RotatingCanvas = styled.canvas.attrs<RotatingCanvasProps>((props) => ({
   },
 }))<RotatingCanvasProps>``;
 
-const Pointer = styled.div`
+export interface PointerProps {
+  image?: string;
+}
+
+const Pointer = styled.div<PointerProps>`
   position: absolute;
   top: 50%;
   right: 0px;
@@ -32,7 +37,7 @@ const Pointer = styled.div`
   height: 24px;
   margin-top: -12px;
   margin-right: 9px;
-  background-image: url(/arrow.png);
+  background-image: url(${(props) => props.image || arrow});
   background-size: cover;
 `;
 
@@ -58,6 +63,7 @@ export interface WheelProps {
   centerImage?: string;
   showCenterTextOverImage?: boolean;
   centerTextFontSize?: number;
+  pointerProps?: PointerProps;
 }
 
 export interface OptionProps {
@@ -90,6 +96,7 @@ const Wheel = ({
   centerImage,
   showCenterTextOverImage = false,
   centerTextFontSize,
+  pointerProps,
 }: WheelProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -364,7 +371,7 @@ const Wheel = ({
           height={canvasSize}
           $rotationAngle={rotationAngle}
         />
-        <Pointer />
+        <Pointer image={pointerProps?.image} />
       </Container>
     </>
   );

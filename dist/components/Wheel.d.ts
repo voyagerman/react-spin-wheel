@@ -1,3 +1,6 @@
+export interface PointerProps {
+    image?: string;
+}
 export interface WheelProps {
     innerRadius: number;
     outerRadius: number;
@@ -20,6 +23,7 @@ export interface WheelProps {
     centerImage?: string;
     showCenterTextOverImage?: boolean;
     centerTextFontSize?: number;
+    pointerProps?: PointerProps;
 }
 export interface OptionProps {
     color: string;
@@ -29,5 +33,5 @@ export interface OptionProps {
     textColor?: string;
     textFontSize?: number;
 }
-declare const Wheel: ({ innerRadius, outerRadius, innerColor, innerBorderWidth, outerBorderWidth, dividerWidth, innerBorderColor, outerBorderColor, dividerColor, options, stopIndex, onSpinEnd, shouldSpin, textColor, textFontSize, textDistanceFromCenter, centerText, centerImage, showCenterTextOverImage, centerTextFontSize, }: WheelProps) => import("react/jsx-runtime").JSX.Element;
+declare const Wheel: ({ innerRadius, outerRadius, innerColor, innerBorderWidth, outerBorderWidth, dividerWidth, innerBorderColor, outerBorderColor, dividerColor, options, stopIndex, onSpinEnd, shouldSpin, textColor, textFontSize, textDistanceFromCenter, centerText, centerImage, showCenterTextOverImage, centerTextFontSize, pointerProps, }: WheelProps) => import("react/jsx-runtime").JSX.Element;
 export default Wheel;
